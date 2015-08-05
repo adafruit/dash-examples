@@ -17,7 +17,6 @@
 // Configuration:
 #define PWM_FREQ 500  // Desired update rate of the LED PWM signal.
 
-
 // Global state:
 volatile uint32_t systick_millis = 0;  // Millisecond counter.
 
