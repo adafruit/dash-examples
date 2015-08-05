@@ -22,8 +22,8 @@ to easily get a toolchain that can work from any OS.
 
 You will also need a STLink V2 programmer connected to at least the Dash's SWDCLK,
 SWDIO, and RESET pads.  The examples are made to be easily uploaded to a Dash
-using the [https://github.com/texane/stlink](stlink Linux command line tools)
-(installed automatically in the mentioned GCC ARM virtual machine image).
+using the [stlink Linux command line tools](https://github.com/texane/stlink)
+(installed automatically in the mentioned GCC ARM virtual machine).
 
 ## Usage
 
@@ -34,7 +34,7 @@ machine if using it):
     git clone --recursive https://github.com/adafruit/dash-examples.git
 
 However if you accidentally don't use the recursive option when cloning you can
-run these commands to pull down the library:
+run these commands from inside the repository to fix it:
 
     git submodule init
     git submodule update
@@ -51,7 +51,11 @@ of the blink example run:
     cd examples/blink
     make hex
 
-You can also run `make clean` to clear all the binaries for an example.
+If you receive an error that no target is found for 'blink.elf' or similar then go
+back and make sure you compiled the libopencm3 library in the repository root first.
+
+Inside an example directory you can also run `make clean` to clear all the binaries
+that were generated.
 
 To flash an example to the board run the `make stlink-flash` command.  This will
 use the st-flash utility to send the example binary to the Dash using a STLink V2
@@ -70,7 +74,7 @@ programmer.  You should see output like the following on success:
     2015-08-05T21:02:49 INFO src/stlink-common.c: Starting verification of write complete
     2015-08-05T21:02:49 INFO src/stlink-common.c: Flash written and verified! jolly good!
 
-If you receive an error that an STLink can't be found, make sure the STLink is
+If you receive an error that a STLink can't be found, make sure the STLink is
 connected to the Dash, your computer, and if running in a virtual machine the
 STLink is passed through to the VM (should automatically happen if using the
 mentioned GCC ARM VM).
