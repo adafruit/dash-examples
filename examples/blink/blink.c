@@ -49,7 +49,7 @@ void sys_tick_handler(void) {
   systick_millis++;
 }
 
-// Setupo and configure the GPIOs to control the LEDs on the Dash.
+// Setup and configure the GPIOs to control the LEDs on the Dash.
 static void gpio_setup(void) {
   // Enable the GPIO clocks for the two GPIO ports that will be used (A & B).
   rcc_periph_clock_enable(RCC_GPIOA);
