@@ -32,11 +32,11 @@ static void delay(uint32_t milliseconds) {
 // Setup the systick timer to increment a count every millisecond.  This is
 // useful for implementing a delay function based on wall clock time.
 static void systick_setup(void) {
-  // The Dash has a 26mhz external crystal and the CPU will run at that speed
-  // if no other clock changes are applied.  To make the systick timer reset
-  // every millisecond (or 1000 times a second) set its reload value to:
+  // By default the Dash CPU will use an internal 16mhz oscillator for the CPU
+  // clock speed.  To make the systick timer reset every millisecond (or 1000
+  // times a second) set its reload value to:
   //   CPU_CLOCK_HZ / 1000
-  systick_set_reload(26000);
+  systick_set_reload(16000);
   // Set the systick clock source to the main CPU clock and enable it and its
   // reload interrupt.
   systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
@@ -86,8 +86,8 @@ static void pwm_setup(void) {
   // center-aligned PWM, and an increasing rate.
   timer_reset(TIM1);
   timer_set_mode(TIM1, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_CENTER_1, TIM_CR1_DIR_UP);
-  // Divide counter by 26 to scale it down from 26mhz clock speed to a 1mhz rate.
-  timer_set_prescaler(TIM1, 26);
+  // Divide counter by 16 to scale it down from 16mhz clock speed to a 1mhz rate.
+  timer_set_prescaler(TIM1, 16);
   // Set timer period by solving:
   //   PWM frequency = timer clock speed / timer period
   timer_set_period(TIM1, 1000000/PWM_FREQ);
@@ -100,8 +100,8 @@ static void pwm_setup(void) {
   // Apply the exact same configuration to timer 4.
   timer_reset(TIM4);
   timer_set_mode(TIM4, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_CENTER_1, TIM_CR1_DIR_UP);
-  timer_set_prescaler(TIM4, 26);
-  timer_set_period(TIM4, 2000);
+  timer_set_prescaler(TIM4, 16);
+  timer_set_period(TIM4, 1000000/PWM_FREQ);
   timer_enable_break_main_output(TIM4);
 
   // Now setup each timer channel that is connected to a LED.  Each channel can

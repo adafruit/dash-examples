@@ -30,11 +30,11 @@ static void delay(uint32_t milliseconds) {
 // Setup the systick timer to increment a count every millisecond.  This is
 // useful for implementing a delay function based on wall clock time.
 static void systick_setup(void) {
-  // The Dash has a 26mhz external crystal and the CPU will run at that speed
-  // if no other clock changes are applied.  To make the systick timer reset
-  // every millisecond (or 1000 times a second) set its reload value to:
+  // By default the Dash CPU will use an internal 16mhz oscillator for the CPU
+  // clock speed.  To make the systick timer reset every millisecond (or 1000
+  // times a second) set its reload value to:
   //   CPU_CLOCK_HZ / 1000
-  systick_set_reload(26000);
+  systick_set_reload(16000);
   // Set the systick clock source to the main CPU clock and enable it and its
   // reload interrupt.
   systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
