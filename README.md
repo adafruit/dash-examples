@@ -3,9 +3,11 @@
 Example code to run on an Amazon Dash using the [libopencm3 library](http://libopencm3.org/wiki/Main_Page).
 Note that right now the examples only show how to run code that uses the Dash's
 STM32F205 CPU and **not** the Broadcom WiFi module.  This means you won't be able
-to use the WiFi radio, but can still change the LEDs, read the button, access a
+to use the WiFi radio, but can still change the LEDs, access a
 UART and more.  Usage of WiFi will require the [WICED SDK](http://community.broadcom.com/community/wiced-wifi)
 and a little more investigation of how the CPU is connected to the WiFi module.
+
+See the [guide for this example code](https://learn.adafruit.com/dash-hacking-bare-metal-stm32-programming/overview) to see details on disassembling the Dash and programming it.
 
 The following examples are available:
 
