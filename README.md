@@ -10,7 +10,6 @@ and a little more investigation of how the CPU is connected to the WiFi module.
 The following examples are available:
 
 *   Blink - Blink each red, green, blue LED individually for a second.
-*   Button - Show how to read the Dash's button and turn on the blue LED when pressed.
 *   PWM - Use PWM to set the red, green, blue LEDs to any RGB color.
 *   UART - Use the UART exposed on PC6 & PC7 to send out data from the Dash.
 
